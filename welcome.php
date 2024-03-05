@@ -1,11 +1,11 @@
 <?php
-session_start();
-
+include "Database.php";
+include "LoginPage.php";
 // Memeriksa apakah pengguna sudah login
-if (!isset($_SESSION['isLoggedIn']) || $_SESSION['isLoggedIn'] !== true) {
-    header("Location: login.php"); // Redirect ke halaman login jika belum login
-    exit;
-}
+// if (!isset($_SESSION['isLoggedIn']) || $_SESSION['isLoggedIn'] !== true) {
+//     header("Location: LoginPage.php"); // Redirect ke halaman login jika belum login
+//     exit;
+// }
 
 $username = $_SESSION['username'];
 $role = $_SESSION['role'];
@@ -27,8 +27,8 @@ if ($role == 'admin') {
     <title>Welcome</title>
 </head>
 <body>
-    <h1>Halaman Selamat Datang</h1>
+    <h1>Agenda Perusahaan X</h1>
     <p><?php echo $welcomeMessage; ?></p>
-    <a href="logout.php">Logout</a>
+    <a href="login_page.html">Logout</a>
 </body>
 </html>
