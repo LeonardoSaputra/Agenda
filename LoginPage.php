@@ -19,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $_SESSION['username'] = $username;
             $role = $_POST['role'];
             $_SESSION['role'] = $role; 
-            $username = $result->fetch_assoc();
             header("Location: welcome.php");
         //     exit;
         // } else {
