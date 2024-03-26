@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda Management</title>
+</head>
+<body>
+    <h2>Tambah Agenda</h2>
+    <form action="add_agenda.php" method="post">
+        <label for="agenda">Agenda:</label><br>
+        <input type="text" id="title" name="title" required><br>
+        <label for="content">Description</label><br>
+        <input type="text" id="content" name="content" required> <br>
+        <label for="tanggal">Tanggal:</label><br>
+        <input type="date" id="tanggal" name="tanggal" required><br><br>
+        <button type="submit">Tambah Agenda</button>
+    </form>
+
+</body>
+</html>
