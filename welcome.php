@@ -26,6 +26,14 @@ if ($role == 'admin') {
 <body>
     <h1>Agenda Perusahaan X</h1>
     <p><?php echo $welcomeMessage; ?></p>
+    <form action="AddAgenda.html" method="post">
+        <button type="submit">Tambah Agenda</button>
+    </form>
+    <br><br>
+    <form action="DeleteAgenda.html" method="post">
+        <button type="submit">Hapus Agenda</button>
+    </form>
+    <br><br>
 </body>
 
 <?php
@@ -49,7 +57,7 @@ foreach ($bulan as $bln) {
     echo '</form>';
 }
 
- echo '<a href="login_page.html">Logout</a>';
+ echo '<br> <a href="login_page.html">Logout</a>';
 ?>
 
 </html>
