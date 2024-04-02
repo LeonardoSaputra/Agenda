@@ -1,6 +1,6 @@
 <?php
 include "Database.php";
-include "LoginPage.php";
+include "LoginController.php";
 
 $username = $_SESSION['username'];
 $role = $_SESSION['role'];
@@ -28,6 +28,10 @@ if ($role == 'admin') {
     <p><?php echo $welcomeMessage; ?></p>
     <form action="AddAgenda.html" method="post">
         <button type="submit">Tambah Agenda</button>
+    </form>
+    <br><br>
+    <form action="EditAgenda.html" method="post">
+        <button type="submit">Edit Agenda</button>
     </form>
     <br><br>
     <form action="DeleteAgenda.html" method="post">
