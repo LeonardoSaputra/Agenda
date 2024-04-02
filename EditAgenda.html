@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Agenda</title>
+</head>
+<body>
+    <h2>Edit Agenda</h2>
+    <form method="post" action="EditAgendaController.php">
+        <label for="id">ID: </label><br>
+        <input type="text" name="id" required><br>
+        <label for="title">Judul Agenda:</label><br>
+        <input type="text" id="title" name="title" value=""><br>
+        <label for="description">Description Agenda:</label><br>
+        <textarea id="content" name="content"></textarea><br> <br>
+        <input type="submit" name="edit_agenda" value="Edit Agenda">
+    </form>
+</body>
+</html>
