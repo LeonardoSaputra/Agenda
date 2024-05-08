@@ -26,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         // }
     } else {
         echo "Login gagal! Pengguna tidak ditemukan.";
+        echo '<br> <a href="login_page.html">Back</a>';
     }
 }
 // session_destroy();
