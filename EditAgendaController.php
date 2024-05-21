@@ -18,11 +18,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['edit_agenda'])) {
 
     $query = "UPDATE agenda SET title='$agenda_title', content='$agenda_description' WHERE id=$agenda_id";
 
-    if (mysqli_query($connection, $query)) {
+    if (mysqli_query($conn, $query)) {
         echo "Agenda berhasil diupdate. <br> <br>";
-        echo '<a href="welcome.php">Back</a>';
+        echo '<a href="welcome.php">Back</a>'; 
     } else {
-        echo "Error: " . $query . "<br>" . mysqli_error($connection);
+        echo "Error: " . $query . "<br>" . mysqli_error($conn);
     }
 }
 ?>
