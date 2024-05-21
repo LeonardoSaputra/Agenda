@@ -1,14 +1,28 @@
 <?php
+include "admin_forms.php";
 include "Database.php";
 include "LoginController.php";
-
+if (!isset($_SESSION['username'])) {
+    // User is not logged in, redirect to login page
+    header("Location: login_page.html");
+    exit();
+}
 $username = $_SESSION['username'];
 $role = $_SESSION['role'];
+
+// Logout Logic
+if (isset($_POST['logout'])) {
+    // Destroy the session
+    session_destroy();
+    // Redirect to login page after logout
+    header("Location: login_page.html");
+    exit();
+}
 
 // Pesan selamat datang berdasarkan peran pengguna
 $welcomeMessage = '';
 if ($role == 'admin') {
-    $welcomeMessage = "Halo, Admin $username! Selamat datang! <br>";
+    $welcomeMessage = "Halo, Admin! Selamat datang! <br>";
 } else {
     $welcomeMessage = "Halo, $username! Selamat datang! <br><br>";
 }
@@ -26,42 +40,28 @@ if ($role == 'admin') {
 <body>
     <h1>Agenda Perusahaan X</h1>
     <p><?php echo $welcomeMessage; ?></p>
-    <form action="AddAgenda.html" method="post">
-        <button type="submit">Tambah Agenda</button>
+    <form method="get" action="filter_dataBulan.php">
+        <label for="bulan">Pilih Bulan:</label>
+        <select name="bulan" id="bulan">
+            <?php
+            // Include file PHP untuk mendapatkan data bulan
+            include 'data_bulan.php';
+            
+            // Menampilkan opsi dropdown untuk setiap bulan
+            foreach ($bulan as $bln) {
+                $nama_bulan = date("F", mktime(0, 0, 0, $bln, 1));
+                echo '<option value="' . $bln . '">' . $nama_bulan . '</option>';
+            }
+            ?>
+        </select>
+        <button type="submit">Filter</button>
     </form>
+    <?php if ($_SESSION['role'] == 'admin'){
+        displayAdminForms();
+    }
+    ?>
     <br><br>
-    <form action="EditAgenda.html" method="post">
-        <button type="submit">Edit Agenda</button>
-    </form>
-    <br><br>
-    <form action="DeleteAgenda.html" method="post">
-        <button type="submit">Hapus Agenda</button>
-    </form>
-    <br><br>
+    <a href="login_page.html" name ="logout">Logout</a>
 </body>
-
-<?php
-include "filter_dataBulan.php";
-
-$query = "SELECT DISTINCT MONTH(date) AS bulan FROM agenda ORDER BY bulan";
-$result = mysqli_query($conn, $query);
-
-// Mengambil hasil query ke dalam array
-$bulan = [];
-while ($row = mysqli_fetch_assoc($result)) {
-    $bulan[] = $row['bulan'];
-}
-
-// Menampilkan tombol untuk setiap bulan
-foreach ($bulan as $bln) {
-    $nama_bulan = date("F", mktime(0, 0, 0, $bln, 1));
-    echo '<form method="get" action="filter_dataBulan.php">';
-    echo '<input type="hidden" name="bulan" value="' . $bln . '">';
-    echo '<button type="submit">' . $nama_bulan . '</button>';
-    echo '</form>';
-}
-
- echo '<br> <a href="login_page.html">Logout</a>';
-?>
 
 </html>

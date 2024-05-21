@@ -1,7 +1,7 @@
 <?php
 
 include "Database.php";
-// Di dalam filter_data.php
+
 
 if (isset($_GET['bulan'])) {
     $bulan = $_GET['bulan'];
@@ -19,6 +19,6 @@ if (isset($_GET['bulan'])) {
                 echo "Date: " . $row["date"] . "<br>" . "<br>";
             }
         }
-        // session_destroy();
+        
     }
 ?>
