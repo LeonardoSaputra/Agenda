@@ -18,7 +18,7 @@ if (isset($_GET['bulan'])) {
                 echo "Content: " . $row["content"] . "<br>";
                 echo "Date: " . $row["date"] . "<br>" . "<br>";
             }
-            echo '<br> <a href="welcome.php">Back</a>';
+            echo '<br> <a href="welcome.php">Back</a>' ;
         }
         
     }
