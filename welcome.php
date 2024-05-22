@@ -1,22 +1,17 @@
 <?php
+
 include "admin_forms.php";
 include "Database.php";
 include "LoginController.php";
-if (!isset($_SESSION['username'])) {
-    // User is not logged in, redirect to login page
-    header("Location: login_page.html");
-    exit();
-}
+
 $username = $_SESSION['username'];
 $role = $_SESSION['role'];
 
-// Logout Logic
-if (isset($_POST['logout'])) {
-    // Destroy the session
-    session_destroy();
-    // Redirect to login page after logout
+// Periksa apakah pengguna sudah login
+if (!isset($_SESSION['isLoggedIn']) || $_SESSION['isLoggedIn'] !== true) {
+    // Jika tidak, arahkan ke halaman login
     header("Location: login_page.html");
-    exit();
+    exit;
 }
 
 // Pesan selamat datang berdasarkan peran pengguna
@@ -61,7 +56,7 @@ if ($role == 'admin') {
     }
     ?>
     <br><br>
-    <a href="login_page.html" name ="logout">Logout</a>
+    <a href="logout.php">Logout</a>
 </body>
 
 </html>
