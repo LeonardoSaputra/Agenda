@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['edit_agenda'])) {
         echo "Agenda berhasil diupdate. <br> <br>";
         echo '<a href="welcome.php">Back</a>'; 
     } else {
-        echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        echo "Error: " . $query . "<br>" . mysqli_error($conn); 
     }
 }
 ?>
